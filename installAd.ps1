@@ -13,7 +13,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
 
 mkdir C:\Logs
 mkdir C:\Scripts
-git clone https://github.com/digitalformula/AutomateADDSInstall.git C:\Scripts
+git clone https://github.com/digitalformula/AutomateADDSInstall.git C:\Scripts -q
 
 Write-Host "Installing AD Domain Services ..."
 Add-WindowsFeature AD-Domain-Services

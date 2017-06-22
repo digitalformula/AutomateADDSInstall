@@ -1,5 +1,5 @@
 Write-Host 'Creating post-reboot scheduled task ...'
-$configureAdAction = New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument "-ExecutionPolicy Bypass -File ""C:\Users\Administrator\Documents\ConfigureAD.ps1"""
+$configureAdAction = New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument "-ExecutionPolicy Bypass -File ""C:\Scripts\configureAd.ps1"""
 $configureAdUserName = New-ScheduledTaskPrincipal -UserID "ntnxdemo2\administrator" -LogonType Password -RunLevel Highest
 $configureAdTrigger  = New-ScheduledTaskTrigger -AtStartup
 $configureAdSettings = New-ScheduledTaskSettingsSet
@@ -11,8 +11,9 @@ iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.p
 choco install git.install -y -params "/GitAndUnixToolsOnPath"
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
 
+mkdir C:\Logs
 mkdir C:\Scripts
-cd C:\Scripts
+git clone https://github.com/digitalformula/AutomateADDSInstall.git C:\Scripts
 
 Write-Host "Installing AD Domain Services ..."
 Add-WindowsFeature AD-Domain-Services

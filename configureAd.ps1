@@ -14,7 +14,7 @@ Start-Sleep -s 300
 LogWrite("Setting up credentials ...")
 $password = ConvertTo-SecureString "nutanix/4u" -AsPlainText -Force
 LogWrite("Password created")
-$credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList "ntnxdemo7\administrator",$password
+$credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList "ntnxdemo8\administrator",$password
 LogWrite("Credential created")
 
 LogWrite("Running AD object creation script ...")

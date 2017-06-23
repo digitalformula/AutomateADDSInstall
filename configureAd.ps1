@@ -1,3 +1,5 @@
+Start-Transcript -Path "C:\Logs\configureAd-transcript.txt")
+
 $Logfile = "C:\Logs\$(gc env:computername)-stage.log"
 
 Function LogWrite
@@ -5,8 +7,6 @@ Function LogWrite
    Param ([string]$logstring)
    Add-content $Logfile -value $logstring
 }
-
-Start-Transcript -Path "C:\Logs\transcript.txt")
 
 LogWrite("Waiting 5 minutes ...")
 Start-Sleep -s 300

@@ -1,3 +1,5 @@
+Start-Transcript -Path "C:\Logs\configureAdOjects-transcript.txt")
+
 $Logfile = "C:\Logs\$(gc env:computername)-adObjects.log"
 
 Function LogWriteObjectsObjects

@@ -1,10 +1,10 @@
 Write-Host 'Creating post-reboot scheduled task ...'
 $configureAdAction = New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument "-ExecutionPolicy Bypass -File ""C:\Scripts\configureAd.ps1"""
-$configureAdUserName = New-ScheduledTaskPrincipal -UserID "ntnxdemo2\administrator" -LogonType Password -RunLevel Highest
+$configureAdUserName = New-ScheduledTaskPrincipal -UserID "Administrator" -LogonType Password -RunLevel Highest
 $configureAdTrigger  = New-ScheduledTaskTrigger -AtStartup
 $configureAdSettings = New-ScheduledTaskSettingsSet
 $configureAdTask = New-ScheduledTask -Action $configureAdAction -Principal $configureAdUserName -Trigger $configureAdTrigger -Settings $configureAdSettings
-Register-ScheduledTask ConfigureAD -InputObject $configureAdTask -Force -Password "nutanix/4u" -User "ntnxdemo2\administrator"
+Register-ScheduledTask ConfigureAD -InputObject $configureAdTask -Force -Password "nutanix/4u" -User "Administrator"
 
 Write-Host 'Installing Git for Windows ...'
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))

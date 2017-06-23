@@ -24,4 +24,4 @@ Add-WindowsFeature RSAT-ADDS-Tools
 Write-Host "Importing ADDS Deployment Module ..."
 Import-Module ADDSDeployment
 Write-Host "Creating AD Forest, Domain and first DC ..."
-Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode "Win2012R2" -DomainName "local.ntnxdemo8.com" -DomainNetbiosName "ntnxdemo8" -ForestMode "Win2012R2" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SysvolPath: "C:\Windows\SYSVOL" -Force:$true -SafeModeAdministratorPassword (ConvertTo-SecureString -String "nutanix/4u" -AsPlainText -Force)
+Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode "Win2012R2" -DomainName "local.ntnxdemo9.com" -DomainNetbiosName "ntnxdemo9" -ForestMode "Win2012R2" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SysvolPath: "C:\Windows\SYSVOL" -Force:$true -SafeModeAdministratorPassword (ConvertTo-SecureString -String "nutanix/4u" -AsPlainText -Force)

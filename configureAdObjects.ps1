@@ -2,7 +2,7 @@ Start-Transcript -Path "C:\Logs\configureAdOjects-transcript.txt"  -IncludeInvoc
 
 $Logfile = "C:\Logs\$(gc env:computername)-adObjects.log"
 
-Function LogWriteObjectsObjects
+Function LogWriteObjects
 {
    Param ([string]$logstring)
    Add-content $Logfile -value $logstring
@@ -36,3 +36,5 @@ LogWriteObjects("Removing scheduled task ...")
 Unregister-ScheduledTask "ConfigureAD" -Confirm:$false
 
 LogWriteObjects("Done!")
+
+Stop-Transcript

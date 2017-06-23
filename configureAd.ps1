@@ -6,6 +6,8 @@ Function LogWrite
    Add-content $Logfile -value $logstring
 }
 
+Start-Transcript -Path "C:\Logs\transcript.txt")
+
 LogWrite("Waiting 5 minutes ...")
 Start-Sleep -s 300
 

@@ -5,7 +5,8 @@ $configureAdUserName = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" 
 $configureAdTrigger  = New-ScheduledTaskTrigger -AtStartup
 $configureAdSettings = New-ScheduledTaskSettingsSet
 $configureAdTask = New-ScheduledTask -Action $configureAdAction -Principal $configureAdUserName -Trigger $configureAdTrigger -Settings $configureAdSettings
-Register-ScheduledTask ConfigureAD -InputObject $configureAdTask -Force -Password "nutanix/4u" -User "Administrator"
+# Register-ScheduledTask ConfigureAD -InputObject $configureAdTask -Force -Password "nutanix/4u" -User "Administrator"
+Register-ScheduledTask ConfigureAD -InputObject $configureAdTask -Force
 
 Write-Host 'Installing Git for Windows ...'
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))

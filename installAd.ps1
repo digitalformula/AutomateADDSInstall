@@ -1,6 +1,7 @@
 Write-Host 'Creating post-reboot scheduled task ...'
 $configureAdAction = New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument "-ExecutionPolicy Bypass -File ""C:\Scripts\configureAd.ps1"""
-$configureAdUserName = New-ScheduledTaskPrincipal -UserID "Administrator" -LogonType Password -RunLevel Highest
+# $configureAdUserName = New-ScheduledTaskPrincipal -UserID "Administrator" -LogonType Password -RunLevel Highest
+$configureAdTaskUserName = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel Highest
 $configureAdTrigger  = New-ScheduledTaskTrigger -AtStartup
 $configureAdSettings = New-ScheduledTaskSettingsSet
 $configureAdTask = New-ScheduledTask -Action $configureAdAction -Principal $configureAdUserName -Trigger $configureAdTrigger -Settings $configureAdSettings

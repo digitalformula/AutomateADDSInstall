@@ -4,7 +4,7 @@ Start-Transcript -Path "C:\Logs\stage-transcript.txt"  -IncludeInvocationHeader 
 Write-Host 'Creating post-reboot scheduled task ...'
 $configureAdAction = New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument "-ExecutionPolicy Bypass -File ""C:\Scripts\configureAd.ps1"""
 # $configureAdUserName = New-ScheduledTaskPrincipal -UserID "Administrator" -LogonType Password -RunLevel Highest
-$configureAdUserName = New-ScheduledTaskPrincipal -UserId "BUILTIN\Administrator" -LogonType ServiceAccount -RunLevel Highest
+$configureAdUserName = New-ScheduledTaskPrincipal -UserId "Administrator" -LogonType ServiceAccount -RunLevel Highest
 $configureAdTrigger  = New-ScheduledTaskTrigger -AtStartup
 $configureAdSettings = New-ScheduledTaskSettingsSet
 $configureAdTask = New-ScheduledTask -Action $configureAdAction -Principal $configureAdUserName -Trigger $configureAdTrigger -Settings $configureAdSettings
@@ -26,6 +26,6 @@ Add-WindowsFeature RSAT-ADDS-Tools
 Write-Host "Importing ADDS Deployment Module ..."
 Import-Module ADDSDeployment
 Write-Host "Creating AD Forest, Domain and first DC ..."
-Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode "Win2012R2" -DomainName "local.ntnxdemo11.com" -DomainNetbiosName "ntnxdemo11" -ForestMode "Win2012R2" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SysvolPath: "C:\Windows\SYSVOL" -Force:$true -SafeModeAdministratorPassword (ConvertTo-SecureString -String "nutanix/4u" -AsPlainText -Force)
+Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode "Win2012R2" -DomainName "local.ntnxdemo13.com" -DomainNetbiosName "ntnxdemo13" -ForestMode "Win2012R2" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SysvolPath: "C:\Windows\SYSVOL" -Force:$true -SafeModeAdministratorPassword (ConvertTo-SecureString -String "nutanix/4u" -AsPlainText -Force)
 
 Stop-Transcript
